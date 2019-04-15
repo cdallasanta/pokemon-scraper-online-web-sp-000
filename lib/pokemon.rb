@@ -2,11 +2,10 @@ class Pokemon
   attr_accessor :id, :name, :type, :db
   @@all = []
 
-  def initialize (id, name, type, db)
-    self.id = id
-    self.name = name
-    self.type = type
-    self.db = db
+  def initialize (args)
+    args.each do |attribute, value|
+      self.send("#{attribute}=", value)
+    end
   end
 
   def self.save(name, type, db)
